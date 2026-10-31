@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+src/regularite/__init__.py
+src/regularite/simulation.py
+src/regularite.egg-info/PKG-INFO
+src/regularite.egg-info/SOURCES.txt
+src/regularite.egg-info/dependency_links.txt
+src/regularite.egg-info/top_level.txt
