@@ -12,3 +12,9 @@ def coefficients_lacunaires(J, alpha, beta, rng):
         niveau[positions] = 2**(-j*beta)   # hauteur des bosses
         c.append(niveau)
     return c
+
+
+def zeta_lacunaire(p, alpha, beta):
+    """Fonction d'échelle théorique de la série lacunaire : zeta(p) = beta p + alpha."""
+    return beta * np.asarray(p) + alpha
+

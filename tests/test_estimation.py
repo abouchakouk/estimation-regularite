@@ -28,3 +28,4 @@ def test_lacunaire_decalage_uniforme():
     zeta = zeta_chapeau(c, P_GRILLE)
     assert np.allclose(zeta - (beta * P_GRILLE + alpha), 1 - alpha - b_N)
     assert np.isclose(pc_chapeau(P_GRILLE, zeta), b_N / beta)
+    
