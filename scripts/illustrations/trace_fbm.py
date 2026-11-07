@@ -19,4 +19,4 @@ for ax, H in zip(axes, valeurs_H):
 
 axes[-1].set_xlabel("$t$")
 fig.tight_layout()
-fig.savefig("figures/fbm.png", dpi=150, bbox_inches="tight")
+fig.savefig("figures/illustrations/fbm.png", dpi=150, bbox_inches="tight")

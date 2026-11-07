@@ -39,3 +39,4 @@ def test_fbm_zeta_2_proche_de_2H():
     c = coefficients_linf(B - B[-1] * t)
     zeta2 = zeta_chapeau(c, np.array([2.0]), j_min=5, j_max=12)[0]
     assert abs(zeta2 - 2 * H) < 0.15
+

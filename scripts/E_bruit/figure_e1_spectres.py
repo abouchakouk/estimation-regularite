@@ -40,4 +40,4 @@ for ax in axes:
     ax.set_ylabel("$D(h)$")
     ax.legend()
 fig.tight_layout()
-fig.savefig("figures/e1_spectres.png", dpi=150, bbox_inches="tight")
+fig.savefig("figures/E_bruit/e1_spectres.png", dpi=150, bbox_inches="tight")

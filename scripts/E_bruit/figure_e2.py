@@ -37,4 +37,4 @@ axes[1].set_ylabel(r"$\hat s(t) = t\,\hat\zeta(1/t)$")
 for ax in axes:
     ax.legend(fontsize=8)
 fig.tight_layout()
-fig.savefig("figures/e2.png", dpi=150, bbox_inches="tight")
+fig.savefig("figures/E_bruit/e2.png", dpi=150, bbox_inches="tight")

@@ -17,4 +17,4 @@ for _ in range(nb_trajectoires):
 ax.set_xlabel("$t$")
 ax.set_ylabel("$B_t$")
 ax.set_title(ax.set_title(f"{nb_trajectoires} trajectoires browniennes, n = {n}"))
-fig.savefig("figures/brownien.png", dpi=150, bbox_inches="tight")
+fig.savefig("figures/illustrations/brownien.png", dpi=150, bbox_inches="tight")
