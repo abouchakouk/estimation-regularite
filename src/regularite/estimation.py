@@ -33,12 +33,12 @@ def spectre_geometrique(p_grille, zeta, nb_h=200):
     que t <= 1/p_c, plus le point (1/p_c, 1/p_c). h parcourt [pente finale de zeta, 1/p_c].
     """
     pc = pc_chapeau(p_grille, zeta)
-    t = [1/p for p in pc]
+    t = 1 / p_grille
     s = t * zeta
     garde = t <= 1 / pc
     t = np.append(t[garde], 1 / pc)
     s = np.append(s[garde], 1 / pc)
-    h_min = zeta[-2] - zeta[-1] / p_grille[-2] - p_grille[-1]
+    h_min = (zeta[-2] - zeta[-1]) / (p_grille[-2] - p_grille[-1])
     h = np.linspace(h_min, 1 / pc, nb_h)
     pentes = (s[None, :] - h[:, None]) / t[None, :]
     D = 1 - pentes.max(axis=1)
