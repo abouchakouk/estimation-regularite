@@ -55,3 +55,13 @@ d'emblée, recopiée). Le format « maths puis code » s'applique à partir de S
     formalisée en « bruit effectif $\sigma_{\text{eff}} \propto n^{-H}$ » [heuristique].
 - **Réécriture de mémoire** (`pentes_locales` via `np.diff`, étape [nouveau] de S1) :
   écarts : _à compléter_.
+
+## 2026-11-08 — S4 : script de calcul Monte-Carlo
+
+- **Compétence.** Reproductibilité : `SeedSequence` et `spawn` ; `np.savez` ; séparation calcul / tracé.
+- **Seul.** —
+- **Avec indices.** `np.savez` (indices puis solution).
+- **Copiées.** Graines `SeedSequence(...).spawn(...)` [nouveau, à réécrire de mémoire en S5] ; boucles (solution consultée).
+- **Ce qui a bloqué.** Le rôle du script : il ne trace rien, il produit `log2 S(j, p)` par répétition, matière première de S5, S6 et S8.
+- **Temps de calcul.** 12,9 s (MacBook Air) ; reproductibilité vérifiée (empreintes md5 identiques).
+- **Réécriture de mémoire.** Rien à réécrire (pas d'étape [nouveau] en S2 et S3).
