@@ -1,7 +1,7 @@
 import numpy as np
 
 from regularite.lacunaires import coefficients_lacunaires
-from regularite.estimation import zeta_chapeau, pc_chapeau
+from regularite.estimation import zeta_chapeau, pc_chapeau,  pentes_locales
 
 P_GRILLE = np.arange(0.25, 5.01, 0.25)
 
@@ -28,4 +28,25 @@ def test_lacunaire_decalage_uniforme():
     zeta = zeta_chapeau(c, P_GRILLE)
     assert np.allclose(zeta - (beta * P_GRILLE + alpha), 1 - alpha - b_N)
     assert np.isclose(pc_chapeau(P_GRILLE, zeta), b_N / beta)
-    
+
+
+
+def test_pentes_locales_loi_puissance_pure():
+    """Si c_{j,k} = 2^{-jH}, alors S(j,p) = 2^{-jHp} : toutes les pentes locales valent H p."""
+    H = 0.06
+    c = [np.full(2 ** j, 2.0 ** (-j * H)) for j in range(16)]
+    pl = pentes_locales(c, P_GRILLE)
+    assert pl.shape == (15, len(P_GRILLE))
+    assert np.allclose(pl, np.tile(H * P_GRILLE, (15, 1)))
+
+
+def test_regression_moyenne_ponderee_pentes_locales():
+    """zeta_chapeau sur [a, b] = sum_{i=a}^{b-1} w_i zeta_i, w_i proportionnel à (i - a + 1)(b - i)."""
+    rng = np.random.default_rng(0)
+    c = [rng.standard_normal(2 ** j) for j in range(16)]
+    a, b = 5, 14
+    i = np.arange(a, b)
+    w = (i - a + 1) * (b - i)
+    w = w / w.sum()
+    pl = pentes_locales(c, P_GRILLE)
+    assert np.allclose(w @ pl[a:b], zeta_chapeau(c, P_GRILLE, a, b))

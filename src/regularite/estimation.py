@@ -43,3 +43,13 @@ def spectre_geometrique(p_grille, zeta, nb_h=200):
     pentes = (s[None, :] - h[:, None]) / t[None, :]
     D = 1 - pentes.max(axis=1)
     return h, D
+
+
+
+def pentes_locales(c, p_grille):
+    """Pentes locales zeta_j(p) = -(log2 S(j+1, p) - log2 S(j, p)), j = 0..J-2.
+
+    Renvoie un tableau (J - 1) x len(p_grille) : ligne j, colonne i -> zeta_j(p_grille[i]).
+    """
+    log_S = np.array([np.log2(fonction_structure(c, p)) for p in p_grille]).T   # J x |P|
+    return -np.diff(log_S, axis=0)
